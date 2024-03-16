@@ -1,0 +1,18 @@
+[
+    {
+      "title": "The Last Duel",
+      "id": 123456789,
+      "synopsis": "Something",
+      "actorIds": [
+        "2294",
+        "1075"
+      ],
+      "releaseDate": "2023-05-12",
+      "rating": 8.7,
+      "link": "https://www.imdb.com/title/tt123456789/",
+      "imagesIds": [
+        "15C397DCB9348AA2",
+        "02B0226B037F70BD"
+      ]
+    }
+]

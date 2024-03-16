@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './blurOverlay.module.scss';
+import style from './BlurOverlay.module.scss';
 
 
 /**

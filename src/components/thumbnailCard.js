@@ -1,7 +1,6 @@
 // components/thumbnailCard.js
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './thumbnailCard.module.scss';
 
 const ThumbnailCard = ({ movie }) => {
   return (

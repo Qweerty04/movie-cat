@@ -1,0 +1,24 @@
+@import './reset.css';
+
+.light {
+    $atom: 4;
+
+    @for $i from 1 through 16 {
+        --atomX#{$i}: calc(1px * #{$i} * #{$atom});
+    }
+
+    font-size: var(--atomX5);
+
+    --clr-space: #E9F1FA;
+    --clr-bg: #fff;
+    --clr-black: #000;
+
+
+    --r1: 0.25em; /* 1/4 of the font-size */
+    --r2: var(--r1) * 2; /* 2 times the font-size */
+    --r3: var(--r2) * 1.5; /* 3/2 times the font-size */
+
+    
+
+}
+

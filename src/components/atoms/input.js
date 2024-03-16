@@ -1,8 +1,8 @@
 // components/atoms/input.js
 import React from 'react';
-import './input.module.scss';
+import styles from './Input.module.scss';
 
-const Input = ({ value, onChange }) => {
+const Input = ({ value, onChange, placeholder}) => {
   const handleChange = (e) => {
     onChange(e.target.value);
   };
@@ -12,8 +12,8 @@ const Input = ({ value, onChange }) => {
       type="text"
       value={value}
       onChange={handleChange}
-      className="input"
-      placeholder="Search movies..."
+      className={styles.input}
+      placeholder={placeholder}
     />
   );
 };

@@ -1,9 +1,9 @@
 // pages/search.js
 import React, { useState } from 'react';
-import SearchForm from '../components/searchForm';
-import ThumbnailCard from '../components/thumbnailCard';
+import SearchForm from '../components/SearchForm';
+import ThumbnailCard from '../components/ThumbnailCard';
 import moviesData from '../assets/movies.json';
-import './search.module.scss';
+//import style from './Search.module.scss';
 
 const SearchPage = () => {
   const [searchTerm, setSearchTerm] = useState('');

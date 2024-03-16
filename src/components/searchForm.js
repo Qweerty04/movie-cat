@@ -1,7 +1,7 @@
 // components/searchForm.js
 import React, { useState } from 'react';
-import Input from './atoms/input';
-import './searchForm.module.scss';
+import Input from './atoms/Input';
+import style from './SearchForm.module.scss';
 
 const SearchForm = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -16,8 +16,8 @@ const SearchForm = ({ onSearch }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="search-form">
-      <Input value={searchTerm} onChange={handleInputChange} />
+    <form onSubmit={handleSubmit} className={style.container}>
+      <Input value={searchTerm} onChange={handleInputChange} placeholder="Search for movies" />
       <button type="submit">Search</button>
     </form>
   );

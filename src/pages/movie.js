@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import moviesData from '../assets/movies.json';
 import actorsData from '../assets/actors.json';
-import './movie.module.scss';
 
 const MoviePage = () => {
   const { id } = useParams();

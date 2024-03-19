@@ -3,6 +3,9 @@
 .light {
     $atom: 4;
 
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
+    font-family: 'Raleway', Arial, sans-serif;
+
     @for $i from 1 through 16 {
         --atomX#{$i}: calc(1px * #{$i} * #{$atom});
     }
@@ -13,12 +16,26 @@
     --clr-bg: #fff;
     --clr-black: #000;
 
+    --f-thin: 100;
+    --f-extra-light: 200;
+    --f-light: 300;
+    --f-regular: 400;
+    --f-medium: 500;
+    --f-semi-bold: 600;
+    --f-bold: 700;
+    --f-extra-bold: 800;
+    --f-black: 900;
 
-    --r1: 0.25em; /* 1/4 of the font-size */
-    --r2: var(--r1) * 2; /* 2 times the font-size */
-    --r3: var(--r2) * 1.5; /* 3/2 times the font-size */
 
-    
+    --r1: var(--atomX1);
+    @for $i from 2 through 5 {
+        --r#{$i}: calc(var(--r#{$i - 1}) * 2.5);
+    }
 
+
+    // different line widths
+    @for $i from 1 through 10 {
+        --lw#{$i}: calc(0.1 * var(--atomX#{$i}));
+    }
 }
 

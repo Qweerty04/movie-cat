@@ -1,13 +1,41 @@
+/* @@note
+    Apparently, we need to define variables before importing SCSS files that use them in mixens, 
+    as opposed to defining them only before using the mixens from the imported SCSS files.
+*/
+$__CSS-MODULE__: true;
+@import '/src/assets/styles/mixins.scss';
+
 .container {
     background-color: var(--clr-bg);
-    width: fit-content;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 100%;
+    padding: var(--atomX6);
+    display: grid;
+    gap: var(--atomX2);
+    border-radius: var(--r2);
+    color: var(--clr-black);
+    .subHeading {
+        font-size: var(--atomX4);
+        font-weight: var(--f-semi-bold);
+    }
 
-    /* vertical centering */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    .icon{
+        width: fit-content;
+        height: 100%;
+        @include iconStyle(var(--lw5));
+    }
+
+    .heading {
+        width: fit-content;
+        height: 100%;
+        font-size: var(--atomX5);
+        font-weight: var(--f-medium);
+    }
+}
+
+.header {
+    display: grid;
+    grid-auto-flow: column;
+    gap: var(--atomX2);
+    align-items: center;
+    grid-auto-columns: min-content;
 }

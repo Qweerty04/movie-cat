@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import SearchForm from '../components/SearchForm';
 import ThumbnailCard from '../components/ThumbnailCard';
 import moviesData from '../assets/movies.json';
-//import style from './Search.module.scss';
+import style from './Search.module.scss';
+
 
 const SearchPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -18,8 +19,8 @@ const SearchPage = () => {
   };
 
   return (
-    <div>
-      <SearchForm onSearch={handleSearch} />
+    <div className={style.container}>
+      <SearchForm onSearch={handleSearch} heading="Search" subHeading="You can search by movie title." />
       {searchTerm && searchResults.length === 0 && (
         <div>No results found for "{searchTerm}"</div>
       )}

@@ -3,39 +3,47 @@
     as opposed to defining them only before using the mixens from the imported SCSS files.
 */
 $__CSS-MODULE__: true;
-@import '/src/assets/styles/mixins.scss';
+@import '/src/assets/styles/mixins/main.scss';
 
 .container {
+    // Styling the Container
+    margin-top: var(--atomX4);
     background-color: var(--clr-bg);
-    width: 100%;
-    padding: var(--atomX6);
-    display: grid;
-    gap: var(--atomX2);
     border-radius: var(--r2);
-    color: var(--clr-black);
+    padding: var(--atomX6);
+
+    // Aligning items inside the Container
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--atomX2);
+    
     .subHeading {
         font-size: var(--atomX4);
         font-weight: var(--f-semi-bold);
+        width: 100%;
+        //word-wrap: break-word;
     }
 
     .icon{
-        width: fit-content;
-        height: 100%;
-        @include iconStyle(var(--lw5));
+        height: var(--atomX6);
+        width: auto;
+        @include iconStyle(var(--pxlw5));
     }
 
     .heading {
         width: fit-content;
-        height: 100%;
+        height: fit-content;
         font-size: var(--atomX5);
         font-weight: var(--f-medium);
     }
 }
 
 .header {
+    height: fit-content;
     display: grid;
     grid-auto-flow: column;
     gap: var(--atomX2);
     align-items: center;
-    grid-auto-columns: min-content;
+    grid-auto-columns: max-content;
 }

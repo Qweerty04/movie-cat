@@ -7,13 +7,30 @@ import { Helmet } from 'react-helmet';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Helmet>
-      <title>Your App Title</title>
-      <meta name="description" content="Description of your app" />
-      {/* Add more meta tags as needed */}
-    </Helmet>
-    <div className={style.light}>
-      <App />
+    <div>
+      <div className={`${style.light} ${style._allowCascade}`}>
+        <App />
+      </div>
     </div>
   </React.StrictMode>
 );
+
+let remove = null;
+
+const updatePixelRatio = () => {
+  if (remove != null) {
+    remove();
+  }
+
+  let mqString = `(resolution: ${window.devicePixelRatio}dppx)`;
+  let media = matchMedia(mqString);
+  media.addListener(updatePixelRatio);
+  remove = function () {
+    media.removeListener(updatePixelRatio);
+  };
+
+  // Set the --zoom CSS variable at root
+  document.documentElement.style.setProperty(`--zoom`, window.devicePixelRatio);
+};
+
+updatePixelRatio();

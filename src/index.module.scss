@@ -1,21 +1,39 @@
+$__CSS-MODULE__: true;
+@import '/src/assets/styles/mixins/main.scss';
 @import './reset.css';
+@import './redAlert.css';
 
 .light {
-    $atom: 4;
+    ////////////////////////////////////////////////////////////////////////////////
+    /// Setting measurement varialbles
+    --z: var(--zoom, 1); // Zoom factor inherited from the parent element but with default value.
+    --atom: 4 * var(--z); // Wherever possible we define our measurements as multiplication of this for an atomic design system.
 
-    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
-    font-family: 'Raleway', Arial, sans-serif;
-
+    // Setting variables --atomX1 through --atomX16 to multiplication of the atom for easy access.
     @for $i from 1 through 16 {
-        --atomX#{$i}: calc(1px * #{$i} * #{$atom});
+        --atomX#{$i}: calc(0.1vw * #{$i} * var(--atom));
     }
 
-    font-size: var(--atomX5);
+    // Setting variables --r1 through --r5 to preset radius variables used for soft corners.
+    --r1: var(--atomX1);
+    @for $i from 2 through 5 {
+        --r#{$i}: calc(var(--r#{$i - 1}) * 2.5);
+    }
 
-    --clr-space: #E9F1FA;
-    --clr-bg: #fff;
-    --clr-black: #000;
+    // Setting variables --pxlw1 through --pxlw9 to preset line width variables used for SVG paths.
 
+    // The multiplication factor that makes the 5th line width variable the same width as the fifth font weight. might need to be adjusted if fon't is changed.
+    $lw-multiplier: 0.1; 
+    @for $i from 1 through 9 {
+        --pxlw#{$i}: calc(var(--atomX1) * #{$lw-multiplier} * #{$i});
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////
+    /// Importing font
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
+    --font-primary: 'Raleway', Arial, sans-serif;
+
+    // Setting shortcut variables for the available font sizes.
     --f-thin: 100;
     --f-extra-light: 200;
     --f-light: 300;
@@ -26,16 +44,35 @@
     --f-extra-bold: 800;
     --f-black: 900;
 
+    /* @@note
+        It's bad practice to download all the differents font weights of a font family.
+        We are just having them all while we are developing the project and will remove extra ones once we figure out which ones are needed,      
+        Hence the todo comment item above.
 
-    --r1: var(--atomX1);
-    @for $i from 2 through 5 {
-        --r#{$i}: calc(var(--r#{$i - 1}) * 2.5);
-    }
+        To download less font weights we adjust the utl from the google fonts api to not include their weight numbers.
+    */
 
+    font-family: var(--font-primary);
 
-    // different line widths
-    @for $i from 1 through 10 {
-        --lw#{$i}: calc(0.1 * var(--atomX#{$i}));
+    font-size: var(--atomX5);
+
+    --clr-space: #E9F1FA;
+    --clr-bg: #fff;
+    --clr-black: #000;
+
+    
+    --page-width: calc(25.3vw * var(--z)) ; // Multiplying by the zoom factor so page width increases when zooming.
+    --page-gutter: calc((100vw - (var(--page-width)) / 2));
+       
+
+    /* Default styling for icons, using our custom mixins */
+    @include iconStyle(var(--pxlw2), var(--clr-black), var(--clr-black));
+    @include iconStyle(null, transparent, transparent, null, true);
+    @include _allowCascade {
+        svg._icon24 {
+            width: 100%;
+            height: 100%;
+        }
     }
 }
 

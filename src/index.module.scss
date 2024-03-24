@@ -60,6 +60,18 @@ $__CSS-MODULE__: true;
     --clr-bg: #fff;
     --clr-black: #000;
 
+    // Opacity Options
+    --ooa: 0.17;
+    
+    --clr-stroke: color-mix(in srgb, var(--clr-black) calc(100% * var(--ooa)), transparent); // 88.38% browser. Reference: https://caniuse.com/?search=color-mix
+    /* @@note
+        The rgba() function did not work to set the opacity when giving it variable input for the color,
+        so I used the color-mix() function instead to mix the color with transparent color to reduce the opacity.
+
+        I tried solutions from here: https://stackoverflow.com/questions/40010597
+    */
+    
+
     
     --page-width: calc(25.3vw * var(--z)) ; // Multiplying by the zoom factor so page width increases when zooming.
     --page-gutter: calc((100vw - (var(--page-width)) / 2));

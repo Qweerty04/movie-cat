@@ -28,8 +28,14 @@ const iconPaths = {
         <path className='stroke s1 nss' 
             d="M3.72412 10.5517L12 2.27585M12 2.27585L20.2758 10.5517M12 2.27585L12 22.2758"
         />
+    </>,
+    star: <>
+        <path className='optional-fill f1 stroke s1 nss'
+            d="M5.26 19.556C5.31012 19.01 5.43734 18.4751 5.53145 17.9357C5.68656 17.0454 5.86248 16.1587 6.00956 15.267C6.08239 14.8254 5.94051 14.4269 5.59765 14.1102C4.67595 13.2594 3.74763 12.4144 2.82215 11.5672C2.7148 11.469 2.60461 11.3739 2.49868 11.2749C2.03807 10.8439 1.87869 10.3366 2.09576 9.75238C2.31283 9.16817 2.77959 8.87629 3.41991 8.7901C4.79891 8.60484 6.17602 8.40892 7.55455 8.22144C8.11684 8.14503 8.50368 7.85848 8.75101 7.38534C9.37573 6.18938 9.99902 4.99253 10.6322 3.80057C11.0333 3.04532 11.9578 2.78587 12.7471 3.18882C13.0602 3.34875 13.255 3.60198 13.4078 3.89298C13.7946 4.63001 14.181 5.3666 14.5683 6.10319C14.7636 6.47504 14.9835 6.83712 15.1523 7.21874C15.4413 7.8727 15.9624 8.1708 16.6926 8.25743C18.0276 8.41603 19.3579 8.60662 20.6891 8.79232C21.2973 8.87718 21.712 9.20815 21.9088 9.75104C22.1069 10.297 21.9806 10.7964 21.546 11.2025C20.613 12.0741 19.6913 12.9591 18.719 13.7907C18.0815 14.3358 17.8933 14.9312 18.0673 15.7162C18.3322 16.9099 18.5213 18.1183 18.7412 19.3205C18.8462 19.8945 18.6377 20.3596 18.1501 20.7039C17.6677 21.0447 17.1338 21.0904 16.5895 20.8457C16.1776 20.6604 15.7784 20.4503 15.3736 20.2512C14.5082 19.8252 13.6404 19.404 12.7788 18.9713C12.2354 18.6985 11.718 18.7305 11.1827 19.0015C9.96923 19.6159 8.74912 20.2197 7.52476 20.815C6.59265 21.2686 5.53145 20.8288 5.29499 19.9087C5.26473 19.7914 5.26898 19.6737 5.26047 19.5551L5.26 19.556Z"
+        />
     </>
 };
+
 
 /**
  * A collection of blob shape paths to be used in SVG.
@@ -51,11 +57,11 @@ const blobIcons = [
  * @param {number} [rotation=0] - The rotation angle in degrees. Defaults to 0.
  * @returns {JSX.Element} The SVG icon wrapped with rotation if specified.
  */
-const pathSVGWrapper = (icon, rotation = 0) => { 
+const pathSVGWrapper = (className, icon, rotation = 0) => { 
     return <svg 
+        className={`_icon24 ${className || ''}` }
         width="24px" 
         height="24px"
-        className={`_icon24` }
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24" 
         fill="transparent" 
@@ -68,32 +74,37 @@ const pathSVGWrapper = (icon, rotation = 0) => {
     </svg>
 };
 
-export const BlobIcon = ({index}) => {
+export const BlobIcon = ({index, className}) => {
     const wrappedIndex = index % blobIcons.length; // Modulo Wraps the index number so that it can't exceed the highest index in the array.
-    return pathSVGWrapper(blobIcons[wrappedIndex]);
+    return pathSVGWrapper(className, blobIcons[wrappedIndex]);
 }
 
-export const BookmarkIcon = () => {
-    return pathSVGWrapper(iconPaths.bookmark);
+export const BookmarkIcon = ({className}) => {
+    return pathSVGWrapper(className, iconPaths.bookmark);
 };
 
-export const SearchIcon = () => {
-    return pathSVGWrapper(iconPaths.search);
+export const SearchIcon = ({className}) => {
+    return pathSVGWrapper(className, iconPaths.search);
 };
 
-export const ArrowUp = () => pathSVGWrapper(iconPaths.arrow, 0);
-export const ArrowDown = () => pathSVGWrapper(iconPaths.arrow, 180);
-export const ArrowLeft = () => pathSVGWrapper(iconPaths.arrow, 270);
-export const ArrowRight = () => pathSVGWrapper(iconPaths.arrow, 90);
-export const ArrowTopLeft = () => pathSVGWrapper(iconPaths.arrow, 315);
-export const ArrowTopRight = () => pathSVGWrapper(iconPaths.arrow, 45);
-export const ArrowBottomLeft = () => pathSVGWrapper(iconPaths.arrow, 225);
-export const ArrowBottomRight = () => pathSVGWrapper(iconPaths.arrow, 135);
+export const StarIcon = ({className}) => {
+    return pathSVGWrapper(className, iconPaths.star);
+};
+
+export const ArrowUp = ({className}) => pathSVGWrapper(className, iconPaths.arrow, 0);
+export const ArrowDown = ({className}) => pathSVGWrapper(className, iconPaths.arrow, 180);
+export const ArrowLeft = ({className}) => pathSVGWrapper(className, iconPaths.arrow, 270);
+export const ArrowRight = ({className}) => pathSVGWrapper(className, iconPaths.arrow, 90);
+export const ArrowTopLeft = ({className}) => pathSVGWrapper(className, iconPaths.arrow, 315);
+export const ArrowTopRight = ({className}) => pathSVGWrapper(className, iconPaths.arrow, 45);
+export const ArrowBottomLeft = ({className}) => pathSVGWrapper(className, iconPaths.arrow, 225);
+export const ArrowBottomRight = ({className}) => pathSVGWrapper(className, iconPaths.arrow, 135);
 
 const Iconset = {
     BookmarkIcon,
     SearchIcon,
     BlobIcon,
+    StarIcon,
     Arrow: {
         Up: ArrowUp,
         Down: ArrowDown,

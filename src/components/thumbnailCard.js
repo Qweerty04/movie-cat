@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowTopRight } from 'components/atoms/Iconset';
 import style from './ThumbnailCard.module.scss';
+import Star from 'components/atoms/Star';
 
 const ThumbnailCard = ({ movie, className }) => {
   return (
@@ -19,7 +20,8 @@ const ThumbnailCard = ({ movie, className }) => {
       <div>
         <h3>{movie.title}</h3>
         <p>{movie.releaseDate}</p>
-        <p>Rating: {movie.rating}</p>
+        {/* <p>Rating: {movie.rating}</p> */}
+        <Star rating={0.5}/>
       </div>
     </Link>
   );

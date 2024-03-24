@@ -14,22 +14,29 @@ $__CSS-MODULE__: true;
     padding: var(--atomX2);
     font-size: var(--atomX2);
     border-radius: var(--r2);
-
+    border: var(--pxlw2) solid var(--clr-stroke);
+    
+    
     &:hover {
+        // When the card is clicked
+        &:active {
+            /* @@note
+                I don't know why but the transition didn't work unless I put it in the context of :hover,
+                Therefore we could only achieve a smooth transtion for when the caard when mouse is down but not for when it's released.
+            */
+            transition: translate 0.2s ease-in-out;
+            translate: 0 var(--atomX1);
+        }
+
         .image {
             --movement: var(--atomX2);
             translate: calc(-1 * var(--movement));
             transform: scale(1.05);
         }
-        .icon > * {
-            translate: calc(var(--atomX1) / 5) calc(-1 * var(--atomX1) / 5);
-        }
     }
 
     .image {
-        //position: relative;
         transition: translate 0.2s ease-in-out;
-        //transition: transform 0.2s ease-in-out;
         object-fit: cover;
         width: 100%;
         display: block;
@@ -46,6 +53,9 @@ $__CSS-MODULE__: true;
         //flex-direction: row-reverse;
         justify-content: right;
     
+        &:hover .icon > * {
+            translate: calc(var(--atomX1) / 5) calc(-1 * var(--atomX1) / 5);
+        }
         .icon{
             //font-size: 0;
             padding: var(--pxlw7);

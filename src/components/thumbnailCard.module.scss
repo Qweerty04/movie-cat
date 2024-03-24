@@ -1,0 +1,70 @@
+$__CSS-MODULE__: true;
+@import '/src/assets/styles/mixins/main.scss';
+
+.container {
+    display: flex;
+    gap: var(--atomX2);
+    flex-direction: column;
+    background-color: var(--clr-bg);
+    color: var(--clr-black);
+    overflow: visible;
+    height: fit-content;
+    box-sizing: border-box;
+    //display: block;
+    padding: var(--atomX2);
+    font-size: var(--atomX2);
+    border-radius: var(--r2);
+
+    &:hover {
+        .image {
+            --movement: var(--atomX2);
+            translate: calc(-1 * var(--movement));
+            transform: scale(1.05);
+        }
+        .icon > * {
+            translate: calc(var(--atomX1) / 5) calc(-1 * var(--atomX1) / 5);
+        }
+    }
+
+    .image {
+        //position: relative;
+        transition: translate 0.2s ease-in-out;
+        //transition: transform 0.2s ease-in-out;
+        object-fit: cover;
+        width: 100%;
+        display: block;
+        border-radius: var(--r1);
+    }
+
+    .header {
+        height: fit-content;
+        display: flex;
+        flex-direction: row;
+        gap: var(--atomX2);
+        align-items: center;
+        grid-auto-columns: max-content;
+        //flex-direction: row-reverse;
+        justify-content: right;
+    
+        .icon{
+            //font-size: 0;
+            padding: var(--pxlw7);
+            border: var(--pxlw5) solid var(--clr-black);
+            border-radius: 50%;
+            height: var(--atomX4);
+            width: auto;
+            @include iconStyle(var(--pxlw5));
+
+            & > * {
+                transition: translate 0.1s ease-out;
+            }
+        }
+    
+        .heading {
+            width: fit-content;
+            height: fit-content;
+            font-size: var(--atomX3);
+            font-weight: var(--f-medium);
+        }
+    }
+}

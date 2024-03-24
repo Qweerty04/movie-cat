@@ -1,8 +1,8 @@
 // pages/search.js
 import React, { useState } from 'react';
-import SearchForm from '../components/SearchForm';
-import ThumbnailCard from '../components/ThumbnailCard';
-import moviesData from '../assets/movies.json';
+import SearchForm from 'components/SearchForm';
+import ThumbnailCard from 'components/ThumbnailCard';
+import moviesData from 'assets/movies.json';
 import style from './Search.module.scss';
 
 
@@ -30,9 +30,9 @@ const SearchPage = () => {
       {searchResults.length > 0 && (
         <div>
           <h2>Search Results for "{searchTerm}"</h2>
-          <div>
+          <div className={`${style.grid} ${style._allowCascade}`}>
             {searchResults.map((movie) => (
-              <ThumbnailCard key={movie.id} movie={movie} />
+              <ThumbnailCard key={movie.id} movie={movie} className={style.thumbnailCard} />
             ))}
           </div>
         </div>

@@ -2,7 +2,7 @@
 import React from 'react';
 import styles from './Input.module.scss';
 
-const Input = ({ value, onChange, placeholder}) => {
+const Input = ({className, value, onChange, placeholder}) => {
   const handleChange = (e) => {
     onChange(e.target.value);
   };
@@ -12,7 +12,7 @@ const Input = ({ value, onChange, placeholder}) => {
       type="text"
       value={value}
       onChange={handleChange}
-      className={styles.input}
+      className={styles.input + ' ' + className}
       placeholder={placeholder}
     />
   );

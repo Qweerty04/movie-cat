@@ -1,7 +1,7 @@
 $__CSS-MODULE__: true;
 @import '/src/assets/styles/mixins/main.scss';
 @import './reset.css';
-@import './redAlert.css';
+//@import './redAlert.css';
 
 .light {
     ////////////////////////////////////////////////////////////////////////////////
@@ -20,11 +20,11 @@ $__CSS-MODULE__: true;
         --r#{$i}: calc(var(--r#{$i - 1}) * 2.5);
     }
 
-    // Setting variables --pxlw1 through --pxlw9 to preset line width variables used for SVG paths.
+    // Setting variables --pxlw1 through --pxlw20 to preset line width variables used for SVG paths.
 
     // The multiplication factor that makes the 5th line width variable the same width as the fifth font weight. might need to be adjusted if fon't is changed.
     $lw-multiplier: 0.1; 
-    @for $i from 1 through 9 {
+    @for $i from 1 through 20 {
         --pxlw#{$i}: calc(var(--atomX1) * #{$lw-multiplier} * #{$i});
     }
 
@@ -72,6 +72,15 @@ $__CSS-MODULE__: true;
         svg._icon24 {
             width: 100%;
             height: 100%;
+            display: block;
+
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-miterlimit: var(--atomX1);
+
+            .nss {
+                vector-effect: non-scaling-stroke;
+            }
         }
     }
 }

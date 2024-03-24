@@ -6,7 +6,7 @@ $__CSS-MODULE__: true;
     gap: var(--atomX2);
     flex-direction: column;
     background-color: var(--clr-bg);
-    color: var(--clr-black);
+    color: var(--clr-content);
     overflow: visible;
     height: fit-content;
     box-sizing: border-box;
@@ -59,7 +59,7 @@ $__CSS-MODULE__: true;
         .icon{
             //font-size: 0;
             padding: var(--pxlw7);
-            border: var(--pxlw5) solid var(--clr-black);
+            border: var(--pxlw5) solid var(--clr-content);
             border-radius: 50%;
             height: var(--atomX4);
             width: auto;

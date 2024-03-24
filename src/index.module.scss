@@ -58,12 +58,12 @@ $__CSS-MODULE__: true;
 
     --clr-space: #E9F1FA;
     --clr-bg: #fff;
-    --clr-black: #000;
+    --clr-content: #000;
 
     // Opacity Options
     --ooa: 0.17;
     
-    --clr-stroke: color-mix(in srgb, var(--clr-black) calc(100% * var(--ooa)), transparent); // 88.38% browser. Reference: https://caniuse.com/?search=color-mix
+    --clr-stroke: color-mix(in srgb, var(--clr-content) calc(100% * var(--ooa)), transparent); // 88.38% browser. Reference: https://caniuse.com/?search=color-mix
     /* @@note
         The rgba() function did not work to set the opacity when giving it variable input for the color,
         so I used the color-mix() function instead to mix the color with transparent color to reduce the opacity.
@@ -78,7 +78,7 @@ $__CSS-MODULE__: true;
        
 
     /* Default styling for icons, using our custom mixins */
-    @include iconStyle(var(--pxlw2), var(--clr-black), var(--clr-black));
+    @include iconStyle(var(--pxlw2), var(--clr-content), var(--clr-content));
     @include iconStyle(null, transparent, transparent, null, true);
     @include _allowCascade {
         svg._icon24 {

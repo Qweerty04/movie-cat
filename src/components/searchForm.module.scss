@@ -55,8 +55,8 @@ $__CSS-MODULE__: true;
 
     .searchButton {
         @include iconStyle(var(--pxlw4), var(--clr-bg));
-        border: var(--pxlw4) solid var(--clr-black);
-        background-color: var(--clr-black);
+        border: var(--pxlw4) solid var(--clr-content);
+        background-color: var(--clr-content);
         padding: var(--r2);
         border-radius: 50%;
         width: fit-content;

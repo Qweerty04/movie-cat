@@ -21,7 +21,7 @@ const ThumbnailCard = ({ movie, className }) => {
         <h3>{movie.title}</h3>
         <p>{movie.releaseDate}</p>
         {/* <p>Rating: {movie.rating}</p> */}
-        <Star rating={0.5}/>
+        <Star rating={movie.rating}/>
       </div>
     </Link>
   );

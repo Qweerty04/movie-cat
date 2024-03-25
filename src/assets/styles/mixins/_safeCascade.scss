@@ -9,7 +9,7 @@ $__CSS-MODULE__: null !default;
  * @throws {Error} SCSS @error is used if the value of $__CSS-MODULE__ is neither true nor false.
  * @throws {Error} SCSS compile error when used in the top level of a SCSS file (i.e. when it's not enclosed in a selector).
  */
- @mixin _allowCascade {
+@mixin _allowCascade {
     @if $__CSS-MODULE__ == null or ($__CSS-MODULE__ != true and $__CSS-MODULE__ != false) {
         // If it's unknown from $__CSS-MODULE__ whether the file is a React CSS Module or not, throw a SCSS compile error.
         @error "$__CSS-MODULE__ was neither true nor false.";
@@ -17,14 +17,21 @@ $__CSS-MODULE__: null !default;
     @else if $__CSS-MODULE__ == true {
         // If file is a React CSS Module, use :global to select classes outside the scope of React CSS Modules but only if parent selector has the '_allowCascade' class.
         &._allowCascade, & ._allowCascade {
-            :global {@content;}
-            /* @@note
-                The ':global' keyword above looks like a CSS pseudo-class but is a selector modifier that is only used in React CSS Modules, 
-                Selectors/Rules that have it will break or show unexpected behavior if the CSS file is used as regular CSS.
-
-                It allows selecting by classes outside the scope of a React CSS module.
-             */
+            &:global:has(*) {@content;}
         }
+
+
+        //._allowCascade:global{&:has(*) {@content;}}
+        
+        // &._allowCascade, & ._allowCascade {
+        //     :global {@content;}
+        //     /* @@note
+        //         The ':global' keyword above looks like a CSS pseudo-class but is a selector modifier that is only used in React CSS Modules, 
+        //         Selectors/Rules that have it will break or show unexpected behavior if the CSS file is used as regular CSS.
+
+        //         It allows selecting by classes outside the scope of a React CSS module.
+        //      */
+        // }
     } @else if $__CSS-MODULE__ == false {
         // If file is regular CSS.
         & {

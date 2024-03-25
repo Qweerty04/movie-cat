@@ -28,7 +28,7 @@ const SearchPage = () => {
   };
 
   return (
-    <div className={style.container}>
+    <div className={`${style.container} ${style._allowCascade} ${searchResults.length > 0 ? style.hasResults : ''}`}>
       <SearchForm onSearch={handleSearch} heading="Search" subHeading="You can search by movie title." />
 
       {/*

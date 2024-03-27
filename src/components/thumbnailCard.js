@@ -14,14 +14,12 @@ const ThumbnailCard = ({ movie, className }) => {
       </div>
       <img
         className={style.image}
-        src={require(`assets/images/movies/small/${movie.imagesIds[0]}.jpg`)}
+        src={require(`assets/images/movies/small/${movie.images.landscape[0]}.jpg`)}
         alt={movie.title}
       />
-      <div>
-        <h3>{movie.title}</h3>
-        <p>{movie.releaseDate}</p>
-        {/* <p>Rating: {movie.rating}</p> */}
-        <Star rating={movie.rating}/>
+      <div className={style.details}>
+        <p className={style.title}>{movie.title}</p>
+        <p className={style.date}>{movie.releaseDate}</p>
       </div>
     </Link>
   );

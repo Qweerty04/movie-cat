@@ -65,6 +65,13 @@ $__CSS-MODULE__: true;
         margin-top: calc(-1 * var(--atomX12));
 
         translate: 0 100%;
+
+        &:hover {
+            translate: 0 calc(100% + var(--pxlw4));
+        }
+        &:active {
+            background-color: var(--clr-hover);
+        }
     }
 
 

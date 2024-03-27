@@ -35,14 +35,6 @@ $__CSS-MODULE__: true;
         }
     }
 
-    .image {
-        transition: translate 0.2s ease-in-out;
-        object-fit: cover;
-        width: 100%;
-        display: block;
-        border-radius: var(--r1);
-    }
-
     .header {
         height: fit-content;
         display: flex;
@@ -75,6 +67,26 @@ $__CSS-MODULE__: true;
             height: fit-content;
             font-size: var(--atomX3);
             font-weight: var(--f-medium);
+        }
+    }
+
+    .image {
+        transition: translate 0.2s ease-in-out;
+        object-fit: cover;
+        width: 100%;
+        display: block;
+        border-radius: var(--r1);
+    }
+
+    .details {
+        .title {
+            font-size: var(--atomX3);
+            font-weight: var(--f-medium);
+        }
+        .date {
+            font-family: var(--font-secondary);
+            font-size: var(--atomX3);
+            font-weight: var(--f-light);
         }
     }
 }

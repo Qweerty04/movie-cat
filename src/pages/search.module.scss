@@ -34,7 +34,8 @@ $__CSS-MODULE__: true;
 .grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--atomX2);
+    gap: var(--atomX4);
+    padding: var(--atomX3);
 
     
     .thumbnailCard {

@@ -71,3 +71,27 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+/* Target everything by default */
+* {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE/Edge */
+  user-select: none;
+}
+
+/* Allow selection for text fields and text areas */
+input[type="text"], textarea {
+  -webkit-user-select: auto; /* Safari */
+  -moz-user-select: auto; /* Firefox */
+  -ms-user-select: auto; /* IE/Edge */
+  user-select: auto;
+}
+
+/* Target everything by default */
+* {
+  -webkit-user-drag: none; /* Safari */
+  -moz-user-drag: none; /* Firefox */
+  -ms-user-drag: none; /* IE/Edge */
+  user-drag: none;
+}

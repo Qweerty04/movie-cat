@@ -12,16 +12,24 @@ function wrapAngle(angle) {
     return angle % 360;
 }
 
-const BlurOverlay = (blurAngle, noBlurOnHover = true) => {
+const BlurOverlay = ({className , src, alt, blurAngle, noBlurOnHover}) => {
   return (
-    <div className={`${style.container} ${noBlurOnHover ? style.fadeout : ""}`}>
-      <img className="image" src="your-image.jpg" alt=""/>
+    <div 
+      className={`${className} ${style.container} ${noBlurOnHover ? style.fadeout : ""}`}
+      style={{"--blurAngle": `${wrapAngle(blurAngle)}`}}
+    >
+      {src && <img className={style.image} src={src} alt={alt}/>}
       {[...Array(20)].map((_, i) => (
-        <div key={i} className={`${style.blurOverlay} blr${i * 5}`} />
+        <div key={i} className={`${style.blurOverlay} ${style[`blr${i * 5}`]}`} />
       ))}
-      <div className="content">Blurred Image Content</div>
+      {/* <div className="content">Blurred Image Content</div> */}
     </div>
   );
+};
+BlurOverlay.defaultProps = {
+  noBlurOnHover: true,
+  blurAngle: 0,
+  alt: "",
 };
 
 export default BlurOverlay;

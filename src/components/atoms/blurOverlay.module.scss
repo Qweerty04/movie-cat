@@ -1,14 +1,22 @@
 // Writing classnames in camelCase instead of kebab-case as this is a CSS module (and not a regular CSS).
 
 .container {
-    width: 500px;
-    height: 300px;
+    //-webkit-filter: blur(0px);
+    backdrop-filter: blur(0px);
+    /* @@note
+        There was an unexpected behaviour with CSS where the backdrop-filter of child elements of .container would break
+    */
+
+
+    width: 100%;
+    height: 100%;
     position: relative;
     overflow: hidden;
 
     //--Optional image that the blurOverlay component can receive---
     .image {
         // this is already enclosed within the .container selector thanks to the SCSS syntax, otherwise we would write it like ".container .image".
+        display: block;
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -22,7 +30,6 @@
         transform: translate(-50%, -50%);
         color: white;
         text-align: center;
-        font-size: 24px;
         font-family: Arial, sans-serif;
     }
 
@@ -49,6 +56,7 @@
     There are other ways to tackle blur effect in CSS so there might be a more performant solution, however, in our case performamce isn't a big factor.
     */
     .blurOverlay {
+        
         // Setting the size and position of all overlays to be based off their parent element (which will be the .container in our HTML).
         width: 100%;
         height: 100%;
@@ -57,12 +65,12 @@
         left: 0;
 
         // This line applies a blur of x pixels strength to what is rendered under this this element (.blurOverlay).
-        backdrop-filter: blur(2px);
+        backdrop-filter: blur(3px);
 
         // Here we are setting some CSS variables. This kind of variable definition is soemthing that doesn't need SCSS but also works in regular CSS.
         --o: white; // this is the opaque color of the gradient.
-        --d: 45deg; // this is the angle of the gradient in degrees 0-360.
-        --s: 45%; // this is the starting point of the gradient.
+        --d: calc(1deg * var(--blurAngle, 45)); // this is the angle of the gradient in degrees 0-360.
+        --s: 50%; // this is the starting point of the gradient.
         --e: 100%; // this is the end point of the gradient.
 
 
@@ -94,7 +102,7 @@
         We use the calc() CSS function with the combination of the variables we have defined and the index number provided by the @for loop. 
         */
         @for $i from 0 through 19 {
-            .blr#{$i * 5} {
+            &.blr#{$i * 5} {
                 mask-image: linear-gradient(var(--d), /* angle of the gradient. */
                     transparent calc(var(--s) + ((var(--e) - var(--s)) * #{$i * 0.05})), /* starting point of the gradient. */
                     white var(--e) /* end point of the gradient. */

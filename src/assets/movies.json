@@ -22,5 +22,29 @@
             "7ECF33C6648E4A8B564A27EE0B4E33B4F8BFE55DDD24D29362FD1C7DAF60C1EF"
           ]
         }
+    },
+    {
+      "title": "The Last Duel",
+      "id": 1,
+      "synopsis": "Some synopsis",
+      "plot": "Some plot",
+      "actors": [
+        {"id": "2294", "role": "some role"},
+        {"id": "1075", "role": "some role"},
+        {"id": "1075", "role": "some role"},        
+        {"id": "1075", "role": "some role"}      
+      ],
+      "releaseDate": "2023-05-12",
+      "rating": 8.7,
+      "reviews": 1542,
+      "link": "https://www.imdb.com/title/tt123456789/",
+      "images":{
+          "landscape": [
+            "8B55B655F309C25660C3529323C08B4C72328153B30C7FCD59B643260CA96DA2"
+          ],
+          "portrait": [
+            "7ECF33C6648E4A8B564A27EE0B4E33B4F8BFE55DDD24D29362FD1C7DAF60C1EF"
+          ]
+        }
     }
 ]

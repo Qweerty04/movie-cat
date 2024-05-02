@@ -28,7 +28,7 @@ $__CSS-MODULE__: true;
         overflow: hidden;;
     }
     .content {
-        overflow: auto; /* Show overflow content with scrollbar */
+        overflow: hidden;
         width: 50%;
         padding: var(--atomX3);
         display: flex;

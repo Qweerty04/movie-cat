@@ -1,57 +1,54 @@
 // pages/search.js
-import React, { useState } from 'react';
+
+import React, { useState, useEffect } from 'react';
+
 import SearchForm from 'components/SearchForm';
 import ThumbnailCard from 'components/ThumbnailCard';
-import moviesData from 'assets/movies.json';
-import style from './Search.module.scss';
 
+import style from './Search.module.scss';
 
 const SearchPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleSearch = (term) => {
-
     const trimmedTerm = term.trim();
     setSearchTerm(trimmedTerm);
+    fetchSearchResults(trimmedTerm);
+  };
 
-    /* @@note
-      I liked to use the value of the searchTerm state for the logic below instead of using the 'term' paramater so that I only needed to trim it once.
-      However, it seems like the value of the the state is not updated before this conponent is rendered so the next lines would read the state value as empty.
-      So instead I created the trimmedTerm variable above.
-    */
-    const results = trimmedTerm === '' ? [] : moviesData.filter((movie) =>
-      (`${movie.title} ${movie.synopsis}`) // Combining title and synopsis to search in both.
-        .toLowerCase().includes(trimmedTerm.toLowerCase())
-    );
-    setSearchResults(results);
+  const fetchSearchResults = async (term) => {
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch(`http://localhost:4000/api/movies/search?q=${encodeURIComponent(term)}`);
+      const data = await response.json();
+      setSearchResults(data);
+    } catch (error) {
+      setError('An error occurred while fetching the search results.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
     <div className={`${style.container} ${style._allowCascade} ${searchResults.length > 0 ? style.hasResults : ''}`}>
       <SearchForm onSearch={handleSearch} heading="Search" subHeading="You can search by movie title." />
 
-      {/*
-      @@note
-      What you see below is a Short-Circuit Evaluation syntax used for conditional rendering.
-      It's an alternative way of conditional code execution to 'if' statements and turnary operators. 
-      Outside of React it is considered a bad practice, but it's fairly common in JSX.
-      */}
+      {isLoading && <div>Loading...</div>}
+      {error && <div>{error}</div>}
+      {!isLoading && !error && searchTerm && searchResults.length === 0 && <div>No results found for "{searchTerm}"</div>}
+      {!isLoading && !error && !searchTerm && <div>Please enter a search term to find movies.</div>}
 
-      {searchTerm && searchResults.length === 0 && (
-        <div>No results found for "{searchTerm}"</div>
-      )}
-
-      {!searchTerm && (
-        <div>Please enter a search term to find movies.</div>
-      )}
-
-      {searchResults.length > 0 && (
+      {!isLoading && !error && searchResults.length > 0 && (
         <div>
           <h2>Search Results for "{searchTerm}"</h2>
           <div className={`${style.grid} ${style._allowCascade}`}>
             {searchResults.map((movie) => (
-              <ThumbnailCard key={movie.id} movie={movie} className={style.thumbnailCard} />
+              <ThumbnailCard key={movie._id} movie={movie} className={style.thumbnailCard} />
             ))}
           </div>
         </div>
@@ -61,6 +58,3 @@ const SearchPage = () => {
 };
 
 export default SearchPage;
-
-// search.module.scss
-/* Styles for the SearchPage component */

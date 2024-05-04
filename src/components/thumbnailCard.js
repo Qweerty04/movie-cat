@@ -3,7 +3,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowTopRight } from 'components/atoms/Iconset';
 import style from './ThumbnailCard.module.scss';
-import Star from 'components/atoms/Star';
 
 const ThumbnailCard = ({ movie, className }) => {
   const cloudinaryUrl = `https://res.cloudinary.com/dzl9moz06/image/upload/c_scale,w_300/movie-cat/movies/${movie.landscapeImage}`;

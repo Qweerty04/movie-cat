@@ -1,52 +1,70 @@
 # Movie Catalog Project
 
-This project was created using Create React App and PNPM (instead of NPM) for package management.
+This is the frontend for the Movie Catalog project, created using Create React App and `pnpm` for package management. The frontend communicates with the backend API to retrieve information about movies and actors.
 
-## Getting Started
+You can find the [backend repository here](<backend-repo-url>).
 
-First, install the project dependencies by running:
+## Installation
 
-### `pnpm install`
+To set up the project, follow the instructions below:
 
-This will install all the necessary packages for the project.
+### Prerequisites
+
+Ensure you have Node.js installed on your machine. Then, install `pnpm` globally if you haven't already:
+
+```shell
+npm install -g pnpm
+```
+
+### Clone the repository
+
+Clone the repository to your local machine:
+
+```shell
+git clone <repository-url>
+cd <repository-name>
+```
+
+### Install dependencies
+
+Navigate to the repository directory and install the necessary dependencies:
+
+```shell
+pnpm install
+```
+
+## Environment Variables
+
+Create a `.env.local` file in the root of the project directory with the below variables to run the project locally. For non-local environments, ensure the same variables are available in your configuration.
+
+```plaintext
+PORT=3000
+REACT_APP_MOVIE_API=<Your API Server's Root Endpoint. For example: http://localhost:4000/api>
+```
+
+- **PORT**: The port the frontend will run on. The default is 3000 (*Optional*).
+- **REACT_APP_MOVIE_API**: The URL of the backend API server. For local development, it should point to the backend server.
 
 ## Available Scripts
 
-In the project directory, you can run:
+In the project directory, you can run the following scripts:
 
-### `pnpm start`
+- **`pnpm start`**: Runs the app in development mode. Open [http://localhost:3000](http://localhost:3000) to view it in your browser. The page will reload when you make changes.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **`pnpm test`**: Launches the test runner in interactive watch mode.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **`pnpm build`**: Builds the app for production in the `build` folder. The build is optimized and ready for deployment.
 
-### `pnpm test`
+- **`pnpm eject`**: **Note:** This is a one-way operation. Once you `eject`, you can't revert the changes. It will copy all the configuration files and transitive dependencies into your project, giving you full control.
 
-Launches the test runner in the interactive watch mode.\
-See the section about running tests for more information.
+**Make sure the backend server is running and that the env variables are configured to point to the API root endpoint that it is serving.**
 
-### `pnpm run build`
+## License
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This project is licensed under the [Creative Commons Attribution License (CC BY)](https://creativecommons.org/licenses/by/4.0/). See the [LICENSE](LICENSE) file for more details.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about deployment for more information.
-
-### `pnpm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However, we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Created by **Madina Omarova**.
 
 ## Learn More
 
-Reach out with any questions to `madinaomarovart@gmail.com`
+If you have any questions, feel free to reach out to `madinaomarovart@gmail.com`.

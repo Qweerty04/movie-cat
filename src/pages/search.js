@@ -7,6 +7,8 @@ import ThumbnailCard from 'components/ThumbnailCard';
 
 import style from './Search.module.scss';
 
+const movieApiUrl = process.env.REACT_APP_MOVIE_API;
+
 const SearchPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
@@ -24,7 +26,7 @@ const SearchPage = () => {
     setError(null);
 
     try {
-      const response = await fetch(`http://localhost:4000/api/movies/search?q=${encodeURIComponent(term)}`);
+      const response = await fetch(`${movieApiUrl}/movies/search?q=${encodeURIComponent(term)}`);
       const data = await response.json();
       setSearchResults(data);
     } catch (error) {

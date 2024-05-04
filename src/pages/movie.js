@@ -7,6 +7,8 @@ import { ArrowTopRight } from 'components/atoms/Iconset';
 import Star from 'components/atoms/Star';
 import Accordion from 'components/Accordion';
 
+const movieApiUrl = process.env.REACT_APP_MOVIE_API;
+
 const MoviePage = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
@@ -15,7 +17,7 @@ const MoviePage = () => {
   useEffect(() => {
     const fetchMovieData = async () => {
       try {
-        const response = await fetch(`http://localhost:4000/api/movies/${id}`);
+        const response = await fetch(`${movieApiUrl}/movies/${id}`);
         const data = await response.json();
         setMovie(data);
         setActors(data.actors);
